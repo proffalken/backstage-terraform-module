@@ -48,7 +48,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./template
+        url: https://github.com/proffalken/backstage-terraform-module/blob/main/templates/catalog-info.yaml
         values:
           name: ${{ parameters.name }}
           type: ${{ parameters.type }}
