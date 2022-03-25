@@ -23,6 +23,13 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
+        type:
+          title: Component Type (Website / Service)
+          type: string
+        owner:
+          title: The Component Owner
+          type: string
+
     - title: Choose a location
       required:
         - repoUrl
@@ -34,8 +41,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-            owner: "makemonmouth"
-            repository: "terraform-module-${{name}}"
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
@@ -46,21 +51,19 @@ spec:
         url: ./template
         values:
           name: ${{ parameters.name }}
-
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
-      input:
-        targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+          type: ${{ parameters.type }}
+          owner: ${{ parameters.owner }}
+          description: ${{ parameters.description }}
 
     - id: publish
       name: Publish
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
+        description: Terraform Module for ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
+        requireCodeOwnerReviews: true
+        defaultBranch: main
 
     - id: register
       name: Register
