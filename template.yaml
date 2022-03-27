@@ -48,7 +48,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: https://github.com/proffalken/backstage-terraform-module/blob/main/templates/
+        url: https://github.com/proffalken/backstage-terraform-module/tree/main/templates/
         values:
           name: ${{ parameters.name }}
           type: ${{ parameters.type }}
