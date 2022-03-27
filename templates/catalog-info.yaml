@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.name | dump }}
-  description: ${{ values.description | dump }}
+  name: ${{ values.name }}
+  description: ${{ values.description }}
   # Example for optional annotations
   # annotations:
   #   github.com/project-slug: backstage/backstage
