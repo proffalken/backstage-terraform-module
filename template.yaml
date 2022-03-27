@@ -29,9 +29,17 @@ spec:
         type:
           title: Component Type (Website / Service)
           type: string
+          enum:
+            - website
+            - service
         owner:
           title: The Component Owner
           type: string
+        provider:
+          title: The Terraform Provider to use
+          enum:
+            - aws
+            - azure
 
     - title: Choose a location
       required:
