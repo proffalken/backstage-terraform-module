@@ -23,6 +23,9 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
+        description:
+          title: A short description of the module - put full details in the README!
+          type: string
         type:
           title: Component Type (Website / Service)
           type: string
