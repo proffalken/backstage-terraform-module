@@ -3,10 +3,9 @@ kind: Component
 metadata:
   name: ${{ values.name }}
   description: ${{ values.description }}
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  annotations:
+     backstage.io/techdocs-ref: dir:./docs
+     github.com/project-slug: ${{ values.repo_owner }}/${{ values.repo_name }}
 spec:
   type: ${{ values.type }}
   owner: ${{ values.owner }}
