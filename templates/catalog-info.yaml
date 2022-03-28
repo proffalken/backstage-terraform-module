@@ -10,3 +10,14 @@ spec:
   type: ${{ values.type }}
   owner: ${{ values.owner }}
   lifecycle: production
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ${{ values.name }}
+  description: ${{ values.description }}
+spec:
+  type: internal
+  lifecycle: production
+  owner: matt@doics.co
+  definition: "${{ values.description }}"
