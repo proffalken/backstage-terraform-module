@@ -5,8 +5,8 @@ metadata:
   description: A template for creating and managing Terraform modules in [backstage.io](https://www.backstage.io/)
   annotations:
      backstage.io/techdocs-ref: dir:./docs
-     github.com/project-slug: ${{ values.repo_owner }}/${{ values.repo_name }}
+     github.com/project-slug: proffalken/backstage-terraform-module
 spec:
-  type: ${{ values.type }}
-  owner: ${{ values.owner }}
+  type: service
+  owner: proffalken
   lifecycle: production
