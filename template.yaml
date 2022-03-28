@@ -42,6 +42,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
+          value: terraform-${{ parameters.provider }}-${{ parameters.name }}
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
@@ -49,7 +50,6 @@ spec:
             allowedOwners:
               - proffalken
               - makemonmouth
-            repoName: terraform-${{ parameters.provider }}-${{ parameters.name }}
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
