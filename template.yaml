@@ -52,6 +52,9 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOwners:
+              - proffalken
+              - makemonmouth
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
