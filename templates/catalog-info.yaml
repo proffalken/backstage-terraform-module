@@ -10,6 +10,8 @@ spec:
   type: ${{ values.type }}
   owner: ${{ values.owner }}
   lifecycle: production
+  providesApis:
+    - ${{ values.name }}
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
