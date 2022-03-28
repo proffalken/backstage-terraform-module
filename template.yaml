@@ -26,12 +26,6 @@ spec:
         description:
           title: A short description of the module - put full details in the README!
           type: string
-        type:
-          title: Component Type (Website / Service)
-          type: string
-          enum:
-            - website
-            - service
         owner:
           title: The Component Owner
           type: string

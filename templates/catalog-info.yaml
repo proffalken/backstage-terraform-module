@@ -7,7 +7,7 @@ metadata:
      backstage.io/techdocs-ref: dir:./docs
      github.com/project-slug: ${{ values.repo_owner }}/${{ values.repo_name }}
 spec:
-  type: ${{ values.type }}
+  type: service
   owner: ${{ values.owner }}
   lifecycle: production
   providesApis:
