@@ -27,8 +27,13 @@ spec:
           title: A short description of the module - put full details in the README!
           type: string
         owner:
-          title: The Component Owner
+          title: Owner
           type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
         provider:
           title: The Terraform Provider to use
           enum:
@@ -48,8 +53,7 @@ spec:
             allowedHosts:
               - github.com
             allowedOwners:
-              - proffalken
-              - makemonmouth
+              - ${{ parameters.owner }}
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
