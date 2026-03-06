@@ -71,8 +71,6 @@ spec:
       name: Publish
       action: publish:github
       input:
-        allowedHosts:
-          - github.com
         description: Terraform module for ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
         requireCodeOwnerReviews: true
