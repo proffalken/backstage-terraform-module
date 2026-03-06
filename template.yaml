@@ -1,68 +1,67 @@
-
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
-# some metadata about the template itself
 metadata:
-  name: terraform
+  name: terraform-module
   title: Terraform Module
-  description: Create a new module for use with Terraform.io
+  description: Create a new Terraform module repository.
 spec:
-  owner: github.com/proffalken
-  type: service
+  owner: user:default/proffalken
+  type: infrastructure
 
-  # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Create a new Terraform Module
+    - title: Module details
       required:
         - name
+        - provider
       properties:
         name:
           title: Name
           type: string
-          description: Unique name of the terraform module
+          description: Unique name of the Terraform module
           ui:autofocus: true
-          ui:options:
-            rows: 5
         description:
-          title: A short description of the module - put full details in the README!
+          title: Description
           type: string
+          description: Short description of the module (put full details in the README)
         owner:
           title: Owner
           type: string
           description: Owner of the component
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds:
-              - Group
+            catalogFilter:
+              - kind: Group
+              - kind: User
         provider:
-          title: The Terraform Provider to use
+          title: Terraform Provider
+          type: string
           enum:
             - aws
             - azure
+            - google
+            - kubernetes
 
-    - title: Choose a location
+    - title: Repository location
       required:
         - repoUrl
       properties:
         repoUrl:
           title: Repository Location
           type: string
-          value: terraform-${{ parameters.provider }}-${{ parameters.name }}
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
               - github.com
 
-  # here's the steps that are executed in series in the scaffolder backend
   steps:
     - id: fetch-base
       name: Fetch Base
       action: fetch:template
       input:
-        url: https://github.com/proffalken/backstage-terraform-module/tree/main/templates/
+        url: ./templates/
         values:
           name: ${{ parameters.name }}
-          type: ${{ parameters.type }}
+          provider: ${{ parameters.provider }}
           owner: ${{ parameters.owner }}
           description: ${{ parameters.description }}
           repo_name: ${{ (parameters.repoUrl | parseRepoUrl)["repo"] }}
@@ -72,8 +71,9 @@ spec:
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ['github.com']
-        description: Terraform Module for ${{ parameters.name }}
+        allowedHosts:
+          - github.com
+        description: Terraform module for ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
         requireCodeOwnerReviews: true
         defaultBranch: main
@@ -83,4 +83,4 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+        catalogInfoPath: /catalog-info.yaml
