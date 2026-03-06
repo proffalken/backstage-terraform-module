@@ -1,25 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.name }}
+  name: ${{ values.name | lower | replace(" ", "-") }}
   description: ${{ values.description }}
   annotations:
-     backstage.io/techdocs-ref: dir:./docs
-     github.com/project-slug: ${{ values.repo_owner }}/${{ values.repo_name }}
+    backstage.io/techdocs-ref: dir:./docs
+    github.com/project-slug: ${{ values.repo_owner }}/${{ values.repo_name }}
 spec:
-  type: service
+  type: library
   owner: ${{ values.owner }}
   lifecycle: production
-  providesApis:
-    - ${{ values.name }}
----
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: ${{ values.name }}
-  description: ${{ values.description }}
-spec:
-  type: internal
-  lifecycle: production
-  owner: matt@doics.co
-  definition: "${{ values.description }}"
