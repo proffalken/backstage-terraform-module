@@ -2,11 +2,11 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage-terraform-template
-  description: A template for creating and managing Terraform modules in [backstage.io](https://www.backstage.io/)
+  description: A template for creating and managing Terraform modules in backstage.io
   annotations:
-     backstage.io/techdocs-ref: dir:./docs
-     github.com/project-slug: proffalken/backstage-terraform-module
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: proffalken/backstage-terraform-module
 spec:
   type: service
-  owner: proffalken
+  owner: user:default/proffalken
   lifecycle: production
