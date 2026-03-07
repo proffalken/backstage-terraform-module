@@ -1,0 +1,9 @@
+site_name: Backstage Terraform Module Template
+site_description: A Backstage template for creating Terraform module repositories
+docs_dir: docs
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core
